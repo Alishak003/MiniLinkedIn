@@ -76,7 +76,7 @@ export const Register = () => {
               required
             />
           </div>
-          <button type="submit" disabled={loading}>Register</button>
+          <button type="submit" disabled={loading}>{loading? 'Registering':"Register"}</button>
         </form>
         <hr />
         <button className="google-btn" onClick={handleGoogleLogin}>

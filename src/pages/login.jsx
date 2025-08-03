@@ -5,6 +5,7 @@ import '../css/login.css'; // Make sure this path matches your file
 import { ArrowArcRight, ArrowRight, GoogleLogo } from 'phosphor-react';
 
 export const Login = () => {
+  const[loading,setLoading] = useState(false)
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -21,6 +22,7 @@ export const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     try {
       await login(form);
@@ -28,6 +30,7 @@ export const Login = () => {
     } catch (err) {
       alert(err.message);
     }
+    setLoading(false)
   };
 
   const handleGoogleLogin = async(e) => {
@@ -69,7 +72,7 @@ export const Login = () => {
               required
             />
           </div>
-          <button type="submit">Sign In <ArrowRight/></button>
+          <button type="submit">{loading ? 'Signing...':"Sign In"} <ArrowRight/></button>
           
         </form>
         <hr />
