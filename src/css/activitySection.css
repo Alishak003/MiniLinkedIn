@@ -6,9 +6,10 @@
   flex-direction: row;
   gap: 8rem;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 .col {
-  max-width: 500px;
+  width: 40%;
 }
 
 .activity-header {
@@ -29,5 +30,9 @@
   .row {
     flex-direction: column;
     gap: 0;
+    flex-wrap: nowrap;
+  }
+  .col {
+    width: 95%;
   }
 }
