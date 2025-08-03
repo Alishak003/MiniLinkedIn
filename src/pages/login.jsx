@@ -80,7 +80,7 @@ export const Login = () => {
             />
           </div>
           {message && <p className="message-text">{message}</p>}
-          <button type="submit">{loading ? 'Signing...':"Sign In"} <ArrowRight/></button>
+          <button type="submit">{loading ? 'Signing...':"Sign In"}{!loading && <ArrowRight/>}</button>
           
         </form>
         <hr />
