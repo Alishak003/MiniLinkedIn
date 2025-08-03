@@ -24,3 +24,9 @@
   justify-content: center;
   padding: 1rem 1.5rem;
 }
+
+@media (max-width: 786px) {
+  .row {
+    flex-direction: "column";
+  }
+}

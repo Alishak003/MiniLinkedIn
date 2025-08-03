@@ -9,6 +9,7 @@
   justify-content: center;
   max-width: 100vw;
   align-items: center;
+  overflow: hidden;
 }
 
 .profile-container {
