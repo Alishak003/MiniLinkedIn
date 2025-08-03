@@ -47,7 +47,7 @@
   - Auth (email/password)
 - **React Router** (page navigation)
 - **React Query** (data fetching and cache)
-- **CSS Modules** (component styling)
+- **CSS** (component styling)
 - **Vercel Hosting**
 
 ---
