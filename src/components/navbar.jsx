@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../config/firebase-config";
-import { logout } from "../services/authService";
-import { List, X } from "phosphor-react";
 import "../css/navbar.css";
+import { logout } from "../services/authService";
+import { auth } from "../config/firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [userId, setUserId] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // for hamburger toggle
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -19,31 +18,35 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    logout();
-    setUserId(null);
-    setMenuOpen(false);
-    navigate('/');
+    logout();               // sign out user (assumes it clears Firebase auth)
+    setUserId(null);        // clear local userId
+    setMenuOpen(false);     // close mobile menu
+    navigate("/");          // redirect to login/home page
   };
 
   return (
     <nav className="navbar">
+      {/* Hamburger & Logo Section */}
       <div className="nav-left">
         <h2 className="nav-logo">MiniLinkedIn</h2>
-
         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X size={24} /> : <List size={24} />}
+          ☰
         </button>
-
-        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
-          <li><Link to="/feed" onClick={() => setMenuOpen(false)}>Feed</Link></li>
-          {userId && <li><Link to={`/profile/${userId}`} onClick={() => setMenuOpen(false)}>Profile</Link></li>}
-          {!userId && <li><Link to="/" onClick={() => setMenuOpen(false)}>Login</Link></li>}
-        </ul>
       </div>
 
-      {userId && (
-        <button className="logout-btn" onClick={handleLogout}>Log Out</button>
-      )}
+      {/* Navigation Links */}
+      <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+        <li><Link to="/feed" onClick={() => setMenuOpen(false)}>Feed</Link></li>
+        {userId && (
+          <li><Link to={`/profile/${userId}`} onClick={() => setMenuOpen(false)}>Profile</Link></li>
+        )}
+        {!userId && (
+          <li><Link to="/" onClick={() => setMenuOpen(false)}>Login</Link></li>
+        )}
+        {userId && (
+          <li><button onClick={handleLogout} className="logout-link">Logout</button></li>
+        )}
+      </ul>
     </nav>
   );
 };

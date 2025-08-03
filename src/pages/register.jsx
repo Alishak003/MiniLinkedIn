@@ -7,6 +7,7 @@ import { googleSignIn, register } from "../services/authService";
 import { auth } from "../config/firebase-config";
 
 export const Register = () => {
+  const[loading,setLoading] = useState(false)
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -23,6 +24,7 @@ export const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     console.log(form);
     const result = await register(form); 
@@ -30,7 +32,8 @@ export const Register = () => {
         navigate('/completeProfile')
     }
     else{
-        setMessage(result.message)
+      setLoading(false)
+      setMessage(result.message)
     }
   };
 
@@ -73,7 +76,7 @@ export const Register = () => {
               required
             />
           </div>
-          <button type="submit">Register</button>
+          <button type="submit" disabled={loading}>Register</button>
         </form>
         <hr />
         <button className="google-btn" onClick={handleGoogleLogin}>
