@@ -1,12 +1,80 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🚀 MiniLinkedIn
 
-Currently, two official plugins are available:
+**MiniLinkedIn** is a minimalist social platform built with React and Firebase. It allows users to register, create profiles, post content, like and comment on posts—similar to features found on Instagram or LinkedIn.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🧪 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Mobile Responsive
+-this website is mobile responsive
+
+### ✅ Authentication
+- Sign up / Login with Email & Password or Google
+- Secure Firebase Authentication
+- Persistent user sessions & Auth-protected routes
+
+### 👤 User Profiles
+- View public user profiles
+- Activity section showing user's posts
+- Profile name with slug connected with each post
+
+### 📝 Posts
+- Create text-based posts
+- Posts display author, content, timestamp
+- Fetch all posts in descending order of creation
+
+### ❤️ Likes
+- Like or unlike any post
+- Real-time like count per post
+- Like state persists on refresh
+- Each post displays total likes and whether the current user has liked it
+
+### 💬 Comments
+- Add comments to any post
+- reply to comments & Nested replies
+- Show comment count and list
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** (Frontend)
+- **Firebase**
+  - Firestore (database)
+  - Auth (email/password)
+- **React Router** (page navigation)
+- **React Query** (data fetching and cache)
+- **CSS** (component styling)
+- **Vercel Hosting**
+
+---
+
+## 📁 Firestore Collections
+
+Ensure your Firestore has the following collections:
+
+- `users`  
+  - Fields: `uid`, `name`, `bio`,`location`,`email`,`created_at`.
+  
+- `posts`  
+  - Fields: `user_id`, `content`, `created_at`
+
+- `post_likes`  
+  - Fields: `postId`, `userId`, `createdAt`
+
+- `comments`  
+  - Fields: `post_id`, `user_id`, `content`, `created_at`,`parent_id`
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/yourusername/minilinkedin.git
+cd minilinkedin
+npm install
+npm run dev
+
