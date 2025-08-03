@@ -14,7 +14,7 @@
 ### ✅ Authentication
 - Sign up / Login with Email & Password or Google
 - Secure Firebase Authentication
-- Persistent user sessions
+- Persistent user sessions & Auth-protected routes
 
 ### 👤 User Profiles
 - View public user profiles
@@ -34,7 +34,7 @@
 
 ### 💬 Comments
 - Add comments to any post
-- reply to comments
+- reply to comments & Nested replies
 - Show comment count and list
 
 ---
