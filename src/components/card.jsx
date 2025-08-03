@@ -5,8 +5,37 @@ import { auth } from "../config/firebase-config"
 import { LikeButton } from "./LikeButton";
 import "../css/card.css"
 import CommentButton from "./CommentButton";
+import { useState } from "react";
 export const Card = ({data})=>{
+const ReadMore = ({ text, limit = 200 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
 
+  if (text.length <= limit) {
+    return <p>{text}</p>;
+  }
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <p>
+      {isExpanded ? text : `${text.substring(0, limit)}... `}
+      <button
+        onClick={handleToggle}
+        style={{
+          background: "none",
+          border: "none",
+          color: "#3b82f6",
+          cursor: "pointer",
+          fontWeight: 500,
+        }}
+      >
+        {isExpanded ? "Show less" : "Read more"}
+      </button>
+    </p>
+  );
+};
   let formattedTime = "";
   if (data.created_at) {
     const date = data.created_at.toDate(); 
@@ -57,11 +86,12 @@ export const Card = ({data})=>{
                         </div>
                       )}
                   </div>
-                  {data.content?(
-                    <div className="text_continer">
-                        <p>{data.content}</p>
-                    </div>
-                  ):''}
+                  {data.content && (
+  <div className="text_continer">
+    <ReadMore text={data.content} limit={200} />
+  </div>
+)}
+
                   <div className="btn_container">
                       <LikeButton postId={data.id} />
                      <CommentButton postId={data.id} onClick={()=>{handleComment(data.id)}}/>

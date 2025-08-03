@@ -12,6 +12,13 @@ export function ProfileHeader({data}) {
             {/* <img src={user.avatar} alt={user.name} className="avatar-img" /> */}
             <UserCircle size={42}/>
           </div>
+          <div className="mobile-header">
+            <div className="profile-avatar">
+            {/* <img src={user.avatar} alt={user.name} className="avatar-img" /> */}
+            <UserCircle size={42}/>
+          </div>
+            <h1 className="profile-name">{data.name}</h1>
+          </div>
 
           {/* User Info */}
           <div className="profile-info">

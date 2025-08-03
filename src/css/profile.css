@@ -1,3 +1,7 @@
+.mobile-header {
+  display: none;
+}
+
 .profile-page {
   position: relative;
   padding: 0 10rem;
@@ -87,4 +91,88 @@
 .stat-label {
   font-size: 13px;
   color: #6b7280;
+}
+
+/* 🔽 Responsive Rules */
+@media (max-width: 1024px) {
+  .profile-page {
+    padding: 0 4rem;
+  }
+
+  .profile-card-content {
+    padding: 3rem;
+  }
+
+  .profile-name {
+    font-size: 20px;
+  }
+
+  .avatar-img {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 0 2rem;
+  }
+
+  .profile-card-content {
+    padding: 2rem;
+  }
+
+  .profile-name {
+    font-size: 1rem;
+  }
+
+  .profile-meta {
+    font-size: 12px;
+  }
+
+  .stat-number {
+    font-size: 14px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-info {
+    margin-top: -1.5rem;
+  }
+  .profile-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .profile-card-content {
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+  }
+
+  .profile-bio {
+    margin-top: -1rem;
+  }
+  .profile-meta {
+    display: block;
+  }
+
+  .meta-item {
+    padding: 0.2rem 0;
+  }
+  .avatar-img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .stat-box {
+    min-width: 80px;
+  }
 }

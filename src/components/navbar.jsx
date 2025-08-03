@@ -1,40 +1,49 @@
-import { Link, useNavigate } from "react-router-dom";
-import "../css/navbar.css";
-import { logout } from "../services/authService"
-import { auth } from "../config/firebase-config";
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../config/firebase-config";
+import { logout } from "../services/authService";
+import { List, X } from "phosphor-react";
+import "../css/navbar.css";
+
 const Navbar = () => {
   const navigate = useNavigate();
-  const [userId,setUserId] = useState(null)
+  const [userId, setUserId] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(()=>{
-          const unsubscribe = onAuthStateChanged(auth, async (user) => {
-               setUserId(user.uid)
-               console.log("user : ",user.uid)
-          })
-          return()=>unsubscribe()
-  },[])
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUserId(user?.uid || null);
+    });
+    return () => unsubscribe();
+  }, []);
+
   const handleLogout = () => {
     logout();
-    navigate('/')
+    setUserId(null);
+    setMenuOpen(false);
+    navigate('/');
   };
+
   return (
     <nav className="navbar">
-      <div style={{display:'flex',justifyContent:'center',marginLeft:'2rem'}}>
-      <h2 className="nav-logo">MiniLinkedIn</h2>
+      <div className="nav-left">
+        <h2 className="nav-logo">MiniLinkedIn</h2>
 
-        <ul className="nav-links">
-          <li><Link to="/feed">Feed</Link></li>
-          <li><Link to={`/profile/${userId}`}>{userId? 'Profile' : ''}</Link></li>
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <X size={24} /> : <List size={24} />}
+        </button>
+
+        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+          <li><Link to="/feed" onClick={() => setMenuOpen(false)}>Feed</Link></li>
+          {userId && <li><Link to={`/profile/${userId}`} onClick={() => setMenuOpen(false)}>Profile</Link></li>}
+          {!userId && <li><Link to="/" onClick={() => setMenuOpen(false)}>Login</Link></li>}
         </ul>
       </div>
-{userId && 
+
+      {userId && (
         <button className="logout-btn" onClick={handleLogout}>Log Out</button>
-}
-{!userId && 
-        <button className="logout-btn" onClick={()=>navigate('/')}>Log In</button>
-}
+      )}
     </nav>
   );
 };
