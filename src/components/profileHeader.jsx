@@ -3,6 +3,7 @@ import "../css/profile.css"; // Make sure this is correctly imported
 
 
 export function ProfileHeader({data}) {
+  console.log("datatatat",data)
   return (
     <div className="profile-card">
       <div className="profile-card-content">
@@ -43,7 +44,7 @@ export function ProfileHeader({data}) {
             {/* Stats */}
             <div className="profile-stats">
               <div className="stat-box">
-                <div className="stat-number">{data.postsCount ?? 0}</div>
+                <div className="stat-number">{data.postCount ?? 0}</div>
                 <div className="stat-label">Posts</div>
               </div>
               <div className="stat-box">

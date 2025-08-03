@@ -24,7 +24,6 @@ export const ActivitySection = ({uid}) => {
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
                 setUserId(user.uid)
-                console.log("user : ",user.uid)
             })
     return()=>unsubscribe()
   },[])
@@ -42,7 +41,6 @@ export const ActivitySection = ({uid}) => {
         setLoading(false)
         return;
       }
-      console.log("userid",userId)
       const result = await getUserPosts(userId);
       if (result.success) {
         setPosts(result.data);

@@ -41,7 +41,6 @@ const ReadMore = ({ text, limit = 200 }) => {
     const date = data.created_at.toDate(); 
     formattedTime = formatDistanceToNow(date, { addSuffix: true }); 
   }
-  console.log(data)
     const user = auth.currentUser?.uid
     const handleComment = (postId)=>{
     navigate(`/comments/${postId}`)
