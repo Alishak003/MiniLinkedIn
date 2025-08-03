@@ -83,7 +83,11 @@ export const usePost = () => {
   async function getUserPosts(userId) {
     try {
       const postsRef = collection(db, "posts");
-      const q = query(postsRef, where("user_id", "==", userId));
+      const q = query(
+        postsRef,
+        where("user_id", "==", userId),
+        orderBy("created_at", "desc")
+      );
       const querySnapshot = await getDocs(q);
 
       const posts = await Promise.all(
@@ -103,13 +107,13 @@ export const usePost = () => {
             } else {
               return {
                 ...docData,
-                id: docData.id,
+                id: document.id,
               };
             }
           } else {
             return {
               ...docData,
-              id: docData.id,
+              id: document.id,
             };
           }
         })

@@ -53,7 +53,7 @@ export const ActivitySection = ({uid}) => {
       setLoading(false);
     };
     fetchActivity()
-  }, []);
+  }, [uid]);
 
   const onPostCreated=() => setShouldRefresh(prev => !prev)
 

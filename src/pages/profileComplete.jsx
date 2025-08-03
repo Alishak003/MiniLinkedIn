@@ -134,6 +134,9 @@ export function CompleteProfile() {
           {message && <p className="message-text">{message}</p>}
 
           <div className="button-group">
+            <button type="button" className="cancel-btn" disabled={loading} onClick={()=>navigate('/')}>
+              Cancel
+            </button>
             <button type="submit" className="submit-btn" disabled={loading}>
               {loading?'Loading':'Complete Profile'}
             </button>
