@@ -59,7 +59,7 @@ const ReadMore = ({ text, limit = 200 }) => {
                       <div className="profile-photo">
                           <UserCircle size={22}/>
                       </div>
-                      <Link className="" to={`/profile/${data.user?.uid}`}>{data.user?.name}</Link>
+                      <Link className="username" to={`/profile/${data.user?.uid}`}>{data.user?.name}</Link>
                       <span style={{ marginLeft: "auto", fontSize: "0.75rem", color: "gray" }}>
                         {formattedTime}
                       </span>

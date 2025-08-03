@@ -26,13 +26,14 @@ export const AuthProvider = ({ children }) => {
       const usersRef = collection(db,'users');
       const uid = auth.currentUser?.uid;
       if (!uid) throw new Error("User not authenticated");
+      const mail = auth.currentUser?.email
       const newProfile = {
         bio:data.bio,
         name:data.fullName,
         created_at:serverTimestamp(),
         uid:uid,
         location:data.location,
-        photoURL:data.avatar
+        email:mail
       }
 
       const docRef = await addDoc(usersRef,newProfile);
@@ -72,8 +73,6 @@ export const AuthProvider = ({ children }) => {
      if (!querySnapshot.empty) {
       const doc = querySnapshot.docs[0];
       const data = doc.data()
-      const email = auth.currentUser?.email
-      data.email=email
       return {success:true,data:data};
     } else {
       console.warn("No user found with this UID");

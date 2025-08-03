@@ -8,6 +8,7 @@ import { auth } from "../config/firebase-config";
 
 export const Register = () => {
   const[loading,setLoading] = useState(false)
+  const[message,setMessage] = useState(false)
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -41,7 +42,8 @@ export const Register = () => {
     e.preventDefault();
     const result = await googleSignIn();
     if(result.success){
-        navigate('/feed')
+        navigate('/completeProfile')
+
     }
     else{
         setMessage(result.message)
@@ -53,6 +55,7 @@ export const Register = () => {
       <div className="login-container">
           <h3>Join Us Today</h3>
           <p>Create an account to continue</p>
+          <img className='login-image' src='register-page-bg.jpg'/>
         <form className="login-card" onSubmit={handleSubmit}>
           <div className="form-field">
             <label>Email</label>
@@ -76,6 +79,8 @@ export const Register = () => {
               required
             />
           </div>
+          {message && <p className="message-text">{message}</p>}
+
           <button type="submit" disabled={loading}>{loading? 'Registering':"Register"}</button>
         </form>
         <hr />

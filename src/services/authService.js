@@ -14,7 +14,7 @@ export async function register({ email, password }) {
       const user = result.user;
       return { success: true, data: user };
     } else {
-      return { success: false, data: null };
+      return { success: false, data: "Something went wrong" };
     }
   } catch (error) {
     return { success: false, error: error.message };
@@ -27,13 +27,10 @@ export async function googleSignIn() {
     if (result?.user) {
       const user = result.user;
       try {
-        
-      } catch (error) {
-        
-      }
+      } catch (error) {}
       return { success: true, data: user };
     } else {
-      return { success: false, data: null };
+      return { success: false, data: "something went wrong!" };
     }
   } catch (error) {
     return { success: false, error: error.message };
@@ -47,7 +44,7 @@ export async function login({ email, password }) {
       const user = result.user;
       return { success: true, data: user };
     } else {
-      return { success: false, data: null };
+      return { success: false, data: "Error Logging in" };
     }
   } catch (error) {
     return { success: false, error: error.message };

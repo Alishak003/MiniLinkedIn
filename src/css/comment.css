@@ -249,3 +249,21 @@
   color: #007bff;
   font-weight: 500;
 }
+
+@media (max-width: 786px) {
+  .comment-input {
+    padding: 0.5rem;
+  }
+  .comment-form {
+    margin-top: 0.5rem;
+  }
+
+  .comment-box-container {
+    margin: 2rem 0;
+  }
+
+  .comment-post-btn {
+    margin-left: 0.5rem;
+    padding: 0.3rem;
+  }
+}

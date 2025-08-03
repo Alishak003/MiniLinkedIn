@@ -10,6 +10,7 @@
 }
 
 .nav-left {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,6 +64,9 @@
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
   .nav-links {
     position: absolute;
     top: 64px;

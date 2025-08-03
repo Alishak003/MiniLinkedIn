@@ -6,6 +6,8 @@ import { ArrowArcRight, ArrowRight, GoogleLogo } from 'phosphor-react';
 
 export const Login = () => {
   const[loading,setLoading] = useState(false)
+  const[message,setMessage] = useState(false)
+
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -25,8 +27,11 @@ export const Login = () => {
     setLoading(true)
     e.preventDefault();
     try {
-      await login(form);
+      const result = await login(form);
+      if(result.success){
       navigate('/feed');
+      }
+      setMessage(result.data)
     } catch (err) {
       alert(err.message);
     }
@@ -49,6 +54,8 @@ export const Login = () => {
       <div className="login-container">
         <h3>Welcome back!</h3>
         <p>Sign in to your account to continue</p>
+        <img className='login-image' src='lading-page-bg.jpg'/>
+
         <form className="login-card" onSubmit={handleSubmit}>
           <div className="form-field">
             <label>Email</label>
@@ -72,6 +79,7 @@ export const Login = () => {
               required
             />
           </div>
+          {message && <p className="message-text">{message}</p>}
           <button type="submit">{loading ? 'Signing...':"Sign In"} <ArrowRight/></button>
           
         </form>

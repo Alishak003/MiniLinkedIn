@@ -7,11 +7,12 @@ import { useAuth } from "../contexts/authContext";
 export function CompleteProfile() {
   const {createUserProfile} = useAuth()
   const navigate = useNavigate()
+  const [loading,setLoading] = useState(false)
+  const [message,setMessage] = useState("")
   const [formData, setFormData] = useState({
     fullName: "",
     bio: "",
     location: "",
-    avatar: "",
   });
 
   const [errors, setErrors] = useState({
@@ -64,6 +65,7 @@ export function CompleteProfile() {
   };
 
   const handleSubmit = async(e) => {
+    setLoading(true)
     e.preventDefault();
     if (validateForm()) {   
       const result = await createUserProfile(formData);
@@ -71,21 +73,15 @@ export function CompleteProfile() {
         navigate('/feed')
       }
       else {
+        setMessage("something went wrong")
         // console.log("error: ",result.message)
       }
     }
-  };
-
-  const handleAvatarUpload = () => {
-    setFormData((prev) => ({
-      ...prev,
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
-    }));
+    setLoading(false)
   };
 
   const completion = Math.round(
-    (Object.values(formData).filter((v) => v.trim() !== "").length / 4) * 100
+    (Object.values(formData).filter((v) => v.trim() !== "").length / 3) * 100
   );
 
   return (
@@ -95,26 +91,6 @@ export function CompleteProfile() {
         <p className="subtitle">
           Help others get to know you better by completing your profile information.
         </p>
-
-        {/* Avatar Upload */}
-        <div className="avatar-section">
-          <div className="avatar-wrapper">
-            {formData.avatar?<img
-              src={
-                formData.avatar 
-              }
-              alt="Avatar"
-              className="avatar-image"
-            />:
-            <UserCircle weight="light" className="avatar-image" size={32}/>
-            }
-            
-            <button className="upload-btn" onClick={handleAvatarUpload}>
-                <Camera size={18}/>
-            </button>
-          </div>
-          <p className="avatar-hint">Click the camera icon to upload a profile picture</p>
-        </div>
 
         <form onSubmit={handleSubmit} className="form-section">
           <div className="form-field">
@@ -155,13 +131,13 @@ export function CompleteProfile() {
             {errors.location && <p className="error-text">{errors.location}</p>}
           </div>
 
+          {message && <p className="message-text">{message}</p>}
+
           <div className="button-group">
-            <button type="button" className="cancel-btn" onClick={() => window.history.back()}>
-              Cancel
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {loading?'Loading':'Complete Profile'}
             </button>
-            <button type="submit" className="submit-btn">
-              Complete Profile
-            </button>
+            
           </div>
         </form>
 <hr className="hr"/>

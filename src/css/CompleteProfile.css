@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  overflow: hidden;
 }
 
 .complete-profile-card {
@@ -104,7 +105,6 @@
 
 .form-field input,
 .form-field textarea {
-  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
@@ -188,4 +188,14 @@ textarea {
 
 .hr {
   margin: 1.5rem 0 1.3rem 0;
+}
+
+@media (max-width: 786px) {
+  .button-group {
+    flex-direction: column;
+  }
+  .button-group button {
+    width: 100%;
+    margin-top: 1rem;
+  }
 }

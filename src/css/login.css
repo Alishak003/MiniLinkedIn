@@ -5,13 +5,10 @@
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  background: #f4f4f4;
+  background: #fff;
 }
 .login-container {
   background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   min-height: 70vh;
   width: 100%;
@@ -35,6 +32,9 @@
   justify-content: center;
 }
 
+.login-image {
+  width: 80%;
+}
 /* Input fields */
 .login-card .form-field {
   text-align: left;
@@ -95,4 +95,10 @@
 
 .switch-auth .link:hover {
   color: #005f91;
+}
+
+.message-text {
+  color: #e63946; /* or green for success */
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
 }

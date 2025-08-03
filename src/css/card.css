@@ -88,3 +88,9 @@
   display: flex;
   gap: 1rem;
 }
+
+@media (max-width: 786px) {
+  .username {
+    font-size: 1rem;
+  }
+}
