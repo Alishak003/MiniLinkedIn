@@ -7,7 +7,7 @@
   import { Profile } from './pages/profile';
   import { CompleteProfile } from './pages/profileComplete';
   import GuestRoute from './guards/GuestOnly';
-  import LoggedinRoute from './guards/LoggedinROute';
+  import LoggedinRoute from './guards/LoggedinRoute';
 
   function App() {
     return (
