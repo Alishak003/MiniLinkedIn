@@ -8,6 +8,7 @@
   align-items: center;
   padding: 2rem;
   overflow: hidden;
+  height: 100vh;
 }
 
 .complete-profile-card {
@@ -191,6 +192,13 @@ textarea {
 }
 
 @media (max-width: 786px) {
+  .complete-profile-page {
+    padding: 0;
+  }
+  .complete-profile-card {
+    padding: 1rem;
+    margin: 0.4rem;
+  }
   .button-group {
     flex-direction: column;
   }
