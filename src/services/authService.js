@@ -13,6 +13,8 @@ const getAuthErrorMessage = (code) => {
       return "This email is already in use. Please try logging in.";
     case "auth/invalid-email":
       return "Invalid email address.";
+    case "auth/invalid-credential":
+      return "Invalid login credential";
     case "auth/weak-password":
       return "Password is too weak. Minimum 6 characters required.";
     case "auth/user-not-found":
@@ -33,10 +35,14 @@ export async function register({ email, password }) {
       const user = result.user;
       return { success: true, data: user };
     } else {
-      return { success: false, data: "Something went wrong" };
+      return { success: false, error: "Something went wrong" };
     }
   } catch (error) {
-    return { success: false, error: error.message };
+    console.log(error);
+    console.log(error.code);
+    console.log(error.message);
+    const errorMessage = getAuthErrorMessage(error.code);
+    return { success: false, error: errorMessage };
   }
 }
 
@@ -49,10 +55,14 @@ export async function googleSignIn() {
       } catch (error) {}
       return { success: true, data: user };
     } else {
-      return { success: false, data: "something went wrong!" };
+      return { success: false, error: "something went wrong!" };
     }
   } catch (error) {
-    return { success: false, error: error.message };
+    console.log(error);
+    console.log(error.code);
+    console.log(error.message);
+    const errorMessage = getAuthErrorMessage(error.code);
+    return { success: false, error: errorMessage };
   }
 }
 
@@ -63,11 +73,14 @@ export async function login({ email, password }) {
       const user = result.user;
       return { success: true, data: user };
     } else {
-      return { success: false, data: "Error Logging in" };
+      return { success: false, error: "Error Logging in" };
     }
   } catch (error) {
+    console.log(error);
+    console.log(error.code);
+    console.log(error.message);
     const errorMessage = getAuthErrorMessage(error.code);
-    return { success: false, error: error.message };
+    return { success: false, error: errorMessage };
   }
 }
 
