@@ -31,9 +31,12 @@ export const Login = () => {
       if(result.success){
       navigate('/feed');
       }
-      setMessage(result.data)
+      else{
+        setMessage(result.error)
+      }
     } catch (err) {
-      alert(err.message);
+      setMessage(err)
+      alert(err.error);
     }
     setLoading(false)
   };
@@ -45,7 +48,7 @@ export const Login = () => {
           navigate('/feed')
       }
       else{
-          setMessage(result.message)
+          setMessage(result.error)
       }
     };
 

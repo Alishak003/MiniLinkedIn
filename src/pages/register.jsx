@@ -34,7 +34,7 @@ export const Register = () => {
     }
     else{
       setLoading(false)
-      setMessage(result.message)
+      setMessage(result.error)
     }
   };
 
@@ -43,10 +43,9 @@ export const Register = () => {
     const result = await googleSignIn();
     if(result.success){
         navigate('/completeProfile')
-
     }
     else{
-        setMessage(result.message)
+        setMessage(result.error)
     }
   };
 
