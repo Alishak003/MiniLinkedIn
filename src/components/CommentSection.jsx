@@ -9,6 +9,7 @@ import { CaretDown, CaretUp } from 'phosphor-react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../config/firebase-config';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/authContext';
 
 export const CommentComponent = ({postId}) =>{
   const {createComment,fetchComments} = useComments()
@@ -53,7 +54,6 @@ export const CommentComponent = ({postId}) =>{
         queryClient.invalidateQueries({queryKey:['comments',postId]})
       }
   })
-
 
   const InputBox = () => {
     const inputRef = useRef(null)
