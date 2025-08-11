@@ -14,7 +14,7 @@
       <BrowserRouter>
       <Routes>
         <Route path="/signup" element={<Login/>} />
-        <Route path="/feed" element={<GuestRoute><Home /></GuestRoute>} />
+        <Route path="/" element={<GuestRoute><Home /></GuestRoute>} />
         <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
         <Route path="/completeProfile" element={<LoggedinRoute><CompleteProfile /></LoggedinRoute>} />
         <Route path="/profile" element={<LoggedinRoute><Profile/></LoggedinRoute>} />

@@ -11,7 +11,7 @@ export const Landing = () => {
     e.preventDefault();
     const result = await googleSignIn();
     if(result.success){
-        navigate('/feed')
+        navigate('/')
     }
     else{
         // setMessage(result.message)

@@ -59,7 +59,7 @@ export const ActivitySection = ({uid}) => {
     e.preventDefault();
     const result = await create({content})
     if(result.success){
-        navigate('/feed')
+        navigate('/')
     }else{
         console.log(result.message)
     }

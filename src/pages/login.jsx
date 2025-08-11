@@ -29,7 +29,7 @@ export const Login = () => {
     try {
       const result = await login(form);
       if(result.success){
-      navigate('/feed');
+      navigate('/');
       }
       else{
         setMessage(result.error)
@@ -45,7 +45,7 @@ export const Login = () => {
       e.preventDefault();
       const result = await googleSignIn();
       if(result.success){
-          navigate('/feed')
+          navigate('/')
       }
       else{
           setMessage(result.error)

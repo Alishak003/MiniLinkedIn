@@ -70,7 +70,7 @@ export function CompleteProfile() {
     if (validateForm()) {   
       const result = await createUserProfile(formData);
       if(result.success){
-        navigate('/feed')
+        navigate('/')
       }
       else {
         setMessage("something went wrong")

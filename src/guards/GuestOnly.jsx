@@ -9,7 +9,7 @@ const GuestRoute = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigate('/feed');
+        navigate('/');
       } else {
         setLoading(false);
       }
