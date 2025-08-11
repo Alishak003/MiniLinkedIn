@@ -140,7 +140,7 @@ export function CompleteProfile() {
             
           </div>
         </form>
-<hr className="hr"/>
+        <hr className="hr"/>
         {/* Progress Bar */}
         <div className="progress-section">
           <div className="progress-labels">
