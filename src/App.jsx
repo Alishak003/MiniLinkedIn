@@ -13,8 +13,8 @@
     return (
       <BrowserRouter>
       <Routes>
-        <Route path="/signup" element={<Login/>} />
-        <Route path="/" element={<GuestRoute><Home /></GuestRoute>} />
+        <Route path="/signup" element={<GuestRoute><Login/></GuestRoute>} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
         <Route path="/completeProfile" element={<LoggedinRoute><CompleteProfile /></LoggedinRoute>} />
         <Route path="/profile" element={<LoggedinRoute><Profile/></LoggedinRoute>} />
