@@ -12,12 +12,12 @@ const LoggedinRoute = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        navigate('/');
+        navigate('/signup');
       } else {
         try {
           const result = await fetchUserDataByUID(user.uid);
           console.log("dataaa")
-          if (!result?.data?.bio) {
+          if (!result?.data?.location) {
             navigate('/completeProfile');
           }
         } catch (error) {
